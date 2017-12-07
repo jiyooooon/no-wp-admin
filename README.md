@@ -6,7 +6,7 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 
 1) download plugin [here](http://google.com)
 2) login to your WordPress website
-3) upload and activate no-wp-admin plugin
+3) upload and activate plugin
 4) (coming soon) click on 'Admin Settings'
 5) (coming soon) upload your logo, set your color schemes, and click 'Save'
 
