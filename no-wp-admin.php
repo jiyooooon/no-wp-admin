@@ -62,7 +62,7 @@ add_action('admin_head','add_custom_css_for_admin');
 function add_custom_css_for_admin () {
 $check_primary_color = get_option('primary_color');
 if (empty($check_primary_color)) { $primary_color = '#0005FF'; $secondary_color = '#0050ff'; }
-else { $primary_color = get_option('primary_color'); $secondary_color = hex2rgba($primary_color, 0.7); }
+else { $primary_color = get_option('primary_color'); $secondary_color = hex2rgba($primary_color,0.7); }
 echo '
 <meta name="msapplication-TileColor" content="' . $primary_color . '">
 <meta name="theme-color" content="' . $primary_color . '">
