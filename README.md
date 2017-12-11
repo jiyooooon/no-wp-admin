@@ -1,6 +1,6 @@
 # no-wp-admin
 
-A simple theme for wp-admin that uses your logo and color schemes instead of WordPress (under development)
+A simple theme for wp-admin that uses your logo and color schemes instead of WordPress
 
 ## How to install
 
