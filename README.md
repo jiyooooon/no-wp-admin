@@ -10,4 +10,10 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 4) click on 'Admin Settings'
 5) (coming soon) upload your logo, set your color schemes, and click 'Save'
 
+## Features
+
+- Requires WordPress Version: 4.9.1
+- Tested up to: {add detail here}
+- more details coming soon!
+
 Enjoy!
