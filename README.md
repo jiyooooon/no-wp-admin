@@ -1,6 +1,6 @@
 # no-wp-admin
 
-A simple theme for wp-admin that uses your logo and color schemes instead of WordPress (under development)
+A simple theme for wp-admin that uses your logo and color schemes instead of WordPress
 
 ## How to install
 
@@ -9,5 +9,11 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 3) upload and activate plugin
 4) click on 'Admin Settings'
 5) (coming soon) upload your logo, set your color schemes, and click 'Save'
+
+## Features
+
+- Requires WordPress Version 4.9.1
+- Tested up to: {add detail here}
+- (coming soon) more details
 
 Enjoy!
