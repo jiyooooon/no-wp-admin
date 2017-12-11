@@ -14,6 +14,6 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 
 - Requires WordPress Version 4.9.1
 - Tested up to: {add detail here}
-- more details coming soon!
+- (coming soon) more details
 
 Enjoy!
