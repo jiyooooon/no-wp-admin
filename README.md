@@ -12,7 +12,7 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 
 ## Features
 
-- Requires WordPress Version: 4.9.1
+- Requires WordPress Version 4.9.1
 - Tested up to: {add detail here}
 - more details coming soon!
 
