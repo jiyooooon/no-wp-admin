@@ -60,12 +60,27 @@ function hex2rgba($color, $opacity = false) {
 // adds custom css for wp-admin
 add_action('admin_head','add_custom_css_for_admin');
 function add_custom_css_for_admin () {
-$check_primary_color = get_option('primary_color');
-if (empty($check_primary_color)) { $primary_color = '#0005FF'; $secondary_color = '#0050ff'; }
-else { $primary_color = get_option('primary_color'); $secondary_color = hex2rgba($primary_color,0.7); }
+
+$check_jkwhmhh_color_1 = get_option('jkwhmhh_color_1');
+if (empty($check_jkwhmhh_color_1)) { $jkwhmhh_color_1 = '#0005FF'; $secondary_color = '#0050ff'; }
+else { $jkwhmhh_color_1 = get_option('jkwhmhh_color_1'); $secondary_color = hex2rgba($jkwhmhh_color_1,0.7); }
+
+$check_jkwhmhh_color_2 = get_option('jkwhmhh_color_2');
+if (empty($check_jkwhmhh_color_2)) {
+	$jkwhmhh_color_2_pre = '#3f444c';
+	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85);
+}
+else {
+	$jkwhmhh_color_2_pre = get_option('jkwhmhh_color_2');
+	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85); 
+}
+
+
+
+
 echo '
-<meta name="msapplication-TileColor" content="' . $primary_color . '">
-<meta name="theme-color" content="' . $primary_color . '">
+<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
+<meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 <style>
 .wpt-form-textarea {
@@ -75,10 +90,17 @@ echo '
     background-color: #f7f8fa;
 }
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
-    background: ' . $primary_color . ';
-    border-color: ' . $primary_color . ';
-    box-shadow: inset 0 2px 0 ' . $primary_color . ';
+    background: ' . $jkwhmhh_color_1 . ';
+    border-color: transparent;
+    box-shadow: inset 0 2px 0 ' . $jkwhmhh_color_1 . ';
 }
+
+.notice-info {
+    border-left-color: ' . $jkwhmhh_color_1 . ';
+}
+
+
+
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -100,19 +122,19 @@ echo '
 	vertical-align: top;
 }
 #minor-publishing-actions .button:hover {
-	background: ' . $primary_color . ';
-	border-color: ' . $primary_color . ';
+	background: ' . $jkwhmhh_color_1 . ';
+	border-color: ' . $jkwhmhh_color_1 . ';
 }
 .view-switch a.current:before {
-    color: ' . $primary_color . ';
+    color: ' . $jkwhmhh_color_1 . ';
 }
 .column-comments .post-com-count-approved:focus .comment-count-approved, .column-comments .post-com-count-approved:hover .comment-count-approved, .column-response .post-com-count-approved:focus .comment-count-approved, .column-response .post-com-count-approved:hover .comment-count-approved {
-    background: ' . $primary_color . ';
+    background: ' . $jkwhmhh_color_1 . ';
 }
 
 
 .column-comments .post-com-count-approved:focus:after, .column-comments .post-com-count-approved:hover:after, .column-response .post-com-count-approved:focus:after, .column-response .post-com-count-approved:hover:after {
-    border-top-color: ' . $primary_color . ';
+    border-top-color: ' . $jkwhmhh_color_1 . ';
 }
 
 #adminmenu .wp-has-current-submenu ul>li>a, .folded #adminmenu li.menu-top .wp-submenu>li>a {
@@ -128,7 +150,7 @@ echo '
 .wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] {
 	color: #8eb1ff!important;
 	background: ' . $secondary_color . '!important;
-	border-color: ' . $secondary_color . '!important;
+	border-color: transparent!important;
 }
 #reg_passmail {
 	display: none;
@@ -154,7 +176,7 @@ echo '
 }
 #adminmenu li>a.menu-top:focus {
 	position: relative;
-	background-color: #595f69;
+	background-color: ' . $jkwhmhh_color_2 . ';
 	color: #fff;
 	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
@@ -230,10 +252,10 @@ body {
 	line-height: 1.4em;
 }
 input[type=radio]:checked:before {
-	background-color: ' . $primary_color . ';
+	background-color: ' . $jkwhmhh_color_1 . ';
 }
 input[type=checkbox]:checked:before {
-	color: ' . $primary_color . ';
+	color: ' . $jkwhmhh_color_1 . ';
 }
 .postbox .inside h2, .wrap [class$=icon32]+h2, .wrap h1, .wrap>h2:first-child {
 	margin: 0;
@@ -252,7 +274,7 @@ h1, h2, h3 {
 	color: #000;
 }
 .plugin-update-tr.active td, .plugins .active th.check-column {
-	border-left: 4px solid ' . $primary_color . ';
+	border-left: 4px solid ' . $jkwhmhh_color_1 . ';
 }
 #menu-management .menu-edit, #menu-settings-column .accordion-container, .comment-ays, .feature-filter, .imgedit-group, .manage-menus, .menu-item-handle, .popular-tags, .stuffbox, .widget-inside, .widget-top, .widgets-holder-wrap, .wp-editor-container, p.popular-tags, table.widefat {
 	border: inherit;
@@ -267,7 +289,7 @@ h1, h2, h3 {
 	background-color: #fff;
 }
 #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.wp-has-current-submenu {
-	background: #595f69;
+	background: ' . $jkwhmhh_color_2 . ';
 	color: #ffffff;
 }
 #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
@@ -276,7 +298,7 @@ h1, h2, h3 {
 	-webkit-box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu a {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #adminmenu .wp-submenu a {
 	color: rgba(63, 68, 76, 0.7);
@@ -285,7 +307,7 @@ h1, h2, h3 {
 	background-color: #dfe0e2;
 }
 #adminmenu div.wp-menu-image:before {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #adminmenu .wp-submenu .wp-submenu-head {
 	color: rgba(63, 68, 76, 0.7);
@@ -297,11 +319,11 @@ h1, h2, h3 {
 }
 #adminmenu li a.wp-has-current-submenu .update-plugins, #adminmenu li.current a .awaiting-mod {
 	background-color: rgb(230, 231, 232);
-	color: #595f69;
+	color: ' . $jkwhmhh_color_2 . ';
 }
 .wp-core-ui .button-primary {
 	background: ' . $secondary_color . ';
-	border-color: ' . $secondary_color . ';
+	border-color: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	color: #fff;
@@ -309,32 +331,32 @@ h1, h2, h3 {
 	text-shadow: none;
 }
 a:active, a:hover {
-	color: ' . $primary_color . ';
+	color: ' . $jkwhmhh_color_1 . ';
 	text-decoration: underline;
 }
 a {
-	color: ' . $primary_color . ';
+	color: ' . $jkwhmhh_color_1 . ';
 }
 .wrap .add-new-h2, .wrap .add-new-h2:active, .wrap .page-title-action, .wrap .page-title-action:active {
-	color: ' . $primary_color . ';
+	color: ' . $jkwhmhh_color_1 . ';
 }
 .theme-browser .theme.add-new-theme a:focus span:after, .theme-browser .theme.add-new-theme a:hover span:after {
 	background: #fff;
-	color: ' . $primary_color . ';
+	color: ' . $jkwhmhh_color_1 . ';
 }
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
-	background: ' . $primary_color . ';
-	border-color: ' . $primary_color . ';
+	background: ' . $jkwhmhh_color_1 . ';
+	border-color: transparent;
 }
 .theme-browser .theme.add-new-theme a:focus:after, .theme-browser .theme.add-new-theme a:hover:after {
-	background: ' . $primary_color . ';
+	background: ' . $jkwhmhh_color_1 . ';
 }
 #wpfooter {
 	display: none;
 }
 .wrap .add-new-h2:hover, .wrap .page-title-action:hover {
-	border-color: ' . $primary_color . ';
-	background: ' . $primary_color . ';
+	border-color: ' . $jkwhmhh_color_1 . ';
+	background: ' . $jkwhmhh_color_1 . ';
 	color: #fff;
 }
 #wp-admin-bar-wp-logo, #wp-admin-bar-updates, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-site-name-default, #wp-admin-bar-customize, #wp-admin-bar-edit, #wp-admin-bar-appearance, #wp-admin-bar-archive, #wp-admin-bar-search, #wp-admin-bar-view {
@@ -349,35 +371,35 @@ a {
 #adminmenu li.menu-top:hover, #adminmenu li.opensub>a.menu-top {
 	position: relative;
 	background-color: #d2d3d6;
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #adminmenu .wp-submenu li:hover {
 	background-color: #d2d3d6;
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu .opensub .wp-submenu li.current a, #adminmenu .wp-submenu li.current, #adminmenu .wp-submenu li.current a, #adminmenu .wp-submenu li.current a:focus, #adminmenu .wp-submenu li.current a:hover, #adminmenu a.wp-has-current-submenu:focus+.wp-submenu li.current a {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #adminmenu .awaiting-mod, #adminmenu .update-plugins {
-	background-color: #595f69;
+	background-color: ' . $jkwhmhh_color_2 . ';
 }
 #collapse-button {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #wpadminbar.mobile .quicklinks .hover .ab-icon:before, #wpadminbar.mobile .quicklinks .hover .ab-item:before {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #adminmenu li a:focus div.wp-menu-image:before, #adminmenu li.opensub div.wp-menu-image:before, #adminmenu li:hover div.wp-menu-image:before {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #collapse-button:focus, #collapse-button:hover {
 	background-color: #d2d3d6;
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 .bar {
@@ -468,8 +490,8 @@ div.wp-menu-image:before {
 add_action('wp_head', 'add_custom_css_frontend');
 function add_custom_css_frontend () {
 echo '
-<meta name="msapplication-TileColor" content="' . $primary_color . '">
-<meta name="theme-color" content="' . $primary_color . '">
+<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
+<meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 <style>
 #wpadminbar #wp-admin-bar-my-account.with-avatar>.ab-empty-item img, #wpadminbar #wp-admin-bar-my-account.with-avatar>a img {
@@ -479,10 +501,10 @@ echo '
 	padding: 0px 0;
 }
 .view-switch a.current:before {
-    color: ' . $primary_color . ';
+    color: ' . $jkwhmhh_color_1 . ';
 }
 .column-comments .post-com-count-approved:focus .comment-count-approved, .column-comments .post-com-count-approved:hover .comment-count-approved, .column-response .post-com-count-approved:focus .comment-count-approved, .column-response .post-com-count-approved:hover .comment-count-approved {
-    background: ' . $primary_color . ';
+    background: ' . $jkwhmhh_color_1 . ';
 }
 #wp-admin-bar-wp-logo, #wp-admin-bar-updates, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-site-name-default, #wp-admin-bar-customize, #wp-admin-bar-edit, #wp-admin-bar-appearance, #wp-admin-bar-archive, #wp-admin-bar-search, #wp-admin-bar-view {
 	display: none;
@@ -546,7 +568,7 @@ html.wp-toolbar {
 	content: "";
 }
 #wpadminbar.mobile .quicklinks .hover .ab-icon:before, #wpadminbar.mobile .quicklinks .hover .ab-item:before {
-	color: #3f444c;
+	color: ' . $jkwhmhh_color_2_pre . ';
 }
 #wpadminbar .ab-icon, #wpadminbar .ab-item:before, #wpadminbar>#wp-toolbar>#wp-admin-bar-root-default .ab-icon {
 	position: relative;
@@ -786,19 +808,30 @@ function admin_settings_page() { ?>
 }
 add_action("admin_menu", "add_admin_settings");
 function display_admin_settings() {
+
 	add_settings_section("admin_setting_section", "Set your logo and colors", "display_admin_setting_content", "admin-settings");
+
 	add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
-	add_settings_field("primary_color", "Primary Color (e.g. #000000)", "display_primary_color", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "admin_logo");
-	register_setting("admin_setting_section", "primary_color");
+
+	add_settings_field("jkwhmhh_color_1", "Color #1 (e.g. #000000)", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
+	register_setting("admin_setting_section", "jkwhmhh_color_1");
+
+	add_settings_field("jkwhmhh_color_2", "Color #2 (e.g. #000000)", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
+	register_setting("admin_setting_section", "jkwhmhh_color_2");
+
 }
 function display_admin_setting_content() { echo ""; }
 function display_admin_logo_form() { ?>
 <input type="text" name="admin_logo" id="admin_logo" value="<?php echo get_option('admin_logo'); ?>" />
 <?php
 }
-function display_primary_color() { ?>
-<input type="text" name="primary_color" id="primary_color" value="<?php echo get_option('primary_color'); ?>" />
+function display_jkwhmhh_color_1() { ?>
+<input type="text" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
+<?php
+}
+function display_jkwhmhh_color_2() { ?>
+<input type="text" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php echo get_option('jkwhmhh_color_2'); ?>" />
 <?php
 }
 add_action("admin_init", "display_admin_settings");
