@@ -13,10 +13,10 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 ## Features
 
 - Requires WordPress Version 4.9.1
-- Tested up to: {add detail here}
-- Uses admin's email address instead of the default wordpress@wordpress.com email address
-- Disables XML-RPC for better security
-- Replaces the 'Howdy' in wp-admin bar
+- (coming soon) Tested up to:
+- Replaces sender name/email from wordpress@yourdomain.com to website's name and admin's email
+- Disables XML-RPC for better security (prevent DDoS attacks)
+- Replaces the 'Howdy' in the admin bar
 - Replaces gravatar with local avatar
 
 Enjoy!
