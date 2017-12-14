@@ -14,6 +14,7 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 
 - Requires WordPress Version 4.9.1
 - Tested up to: 3.5 or later (beta)
+- Select color schemes using color picker
 - Replaces sender name/email from wordpress@yourdomain.com to website's name and admin's email
 - Disables XML-RPC for better security (prevent DDoS attacks)
 - Replaces the 'Howdy' in the admin bar
