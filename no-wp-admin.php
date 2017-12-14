@@ -837,8 +837,8 @@ function display_jkwhmhh_color_2() { ?>
 add_action("admin_init", "display_admin_settings");
 
 // WordPress Color Picker API
-add_action( 'admin_enqueue_scripts', 'wptuts_add_color_picker' );
-function wptuts_add_color_picker($hook) {
+add_action( 'admin_enqueue_scripts', 'add_color_picker' );
+function add_color_picker($hook) {
      if( is_admin() ) {       
         wp_enqueue_style( 'wp-color-picker' ); 
         wp_enqueue_script( 'custom-script-handle', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
