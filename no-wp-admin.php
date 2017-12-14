@@ -814,10 +814,10 @@ function display_admin_settings() {
 	add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "admin_logo");
 
-	add_settings_field("jkwhmhh_color_1", "Color #1 (e.g. #000000)", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
+	add_settings_field("jkwhmhh_color_1", "Color #1", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "jkwhmhh_color_1");
 
-	add_settings_field("jkwhmhh_color_2", "Color #2 (e.g. #000000)", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
+	add_settings_field("jkwhmhh_color_2", "Color #2", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "jkwhmhh_color_2");
 
 }
@@ -827,12 +827,22 @@ function display_admin_logo_form() { ?>
 <?php
 }
 function display_jkwhmhh_color_1() { ?>
-<input type="text" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
+<input type="text" class="jkwhmhh_color_1" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
 <?php
 }
 function display_jkwhmhh_color_2() { ?>
-<input type="text" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php echo get_option('jkwhmhh_color_2'); ?>" />
+<input type="text" class="jkwhmhh_color_2" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php echo get_option('jkwhmhh_color_2'); ?>" />
 <?php
 }
 add_action("admin_init", "display_admin_settings");
+
+// WordPress Color Picker API
+add_action( 'admin_enqueue_scripts', 'wptuts_add_color_picker' );
+function wptuts_add_color_picker($hook) {
+     if( is_admin() ) {       
+        wp_enqueue_style( 'wp-color-picker' ); 
+        wp_enqueue_script( 'custom-script-handle', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+    }
+}
+
 ?>
