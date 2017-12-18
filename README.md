@@ -24,6 +24,6 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 
 [Theme 1]
 
-![alt text](https://github.com/julieeeeeee/no-wp-admin/blob/master/theme-1.png)
+![alt text](https://github.com/julieeeeeee/no-wp-admin/blob/master/theme-one.png)
 
 Enjoy!
