@@ -20,4 +20,8 @@ A simple theme for wp-admin that uses your logo and color schemes instead of Wor
 - Replaces the 'Howdy' in the admin bar
 - Replaces gravatar with local avatar
 
+## Available Themes
+
+[[https://github.com/julieeeeeee/no-wp-admin/blob/master/theme-1.png|alt=Theme 1]]
+
 Enjoy!
