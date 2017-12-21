@@ -146,7 +146,7 @@ echo '
 	margin-left: 0!important;
 }
 .wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] {
-	color: #8eb1ff!important;
+	color: #d2d2d2!important;
 	background: ' . $secondary_color . '!important;
 	border-color: transparent!important;
 }
