@@ -74,10 +74,6 @@ else {
 	$jkwhmhh_color_2_pre = get_option('jkwhmhh_color_2');
 	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85); 
 }
-
-
-
-
 echo '
 <meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
 <meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
@@ -94,13 +90,18 @@ echo '
     border-color: transparent;
     box-shadow: inset 0 2px 0 ' . $jkwhmhh_color_1 . ';
 }
-
 .notice-info {
     border-left-color: ' . $jkwhmhh_color_1 . ';
 }
-
-
-
+.theme-browser .theme.active .theme-name {
+    background: ' . $jkwhmhh_color_2_pre . '; box-shadow: none;
+}
+.theme-browser .theme.active .theme-actions {
+    background: ' . $jkwhmhh_color_2 . ';
+}
+.filter-count .count, .title-count {
+    background: ' . $jkwhmhh_color_2 . ';
+}
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -131,12 +132,9 @@ echo '
 .column-comments .post-com-count-approved:focus .comment-count-approved, .column-comments .post-com-count-approved:hover .comment-count-approved, .column-response .post-com-count-approved:focus .comment-count-approved, .column-response .post-com-count-approved:hover .comment-count-approved {
     background: ' . $jkwhmhh_color_1 . ';
 }
-
-
 .column-comments .post-com-count-approved:focus:after, .column-comments .post-com-count-approved:hover:after, .column-response .post-com-count-approved:focus:after, .column-response .post-com-count-approved:hover:after {
     border-top-color: ' . $jkwhmhh_color_1 . ';
 }
-
 #adminmenu .wp-has-current-submenu ul>li>a, .folded #adminmenu li.menu-top .wp-submenu>li>a {
 	padding: 6px 0px 6px 37px;
 	margin: 0;
@@ -178,7 +176,6 @@ echo '
 	position: relative;
 	background-color: ' . $jkwhmhh_color_2 . ';
 	color: #fff;
-	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu {
 	margin: 0px 0;
@@ -294,8 +291,6 @@ h1, h2, h3 {
 }
 #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
 	background-color: #e6e7e8;
-	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
-	-webkit-box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu a {
 	color: ' . $jkwhmhh_color_2_pre . ';
@@ -368,19 +363,17 @@ a {
 #wpadminbar #wp-admin-bar-site-name>.ab-item:before {
 	content: "";
 }
-#adminmenu li.menu-top:hover, #adminmenu li.opensub>a.menu-top {
+#adminmenu li.menu-top:hover {
 	position: relative;
 	background-color: #d2d3d6;
 	color: ' . $jkwhmhh_color_2_pre . ';
-	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover {
 	color: ' . $jkwhmhh_color_2_pre . ';
 }
-#adminmenu .wp-submenu li:hover {
+#adminmenu .wp-submenu li:hover, #adminmenu li.opensub>a.menu-top  {
 	background-color: #d2d3d6;
 	color: ' . $jkwhmhh_color_2_pre . ';
-	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 #adminmenu .opensub .wp-submenu li.current a, #adminmenu .wp-submenu li.current, #adminmenu .wp-submenu li.current a, #adminmenu .wp-submenu li.current a:focus, #adminmenu .wp-submenu li.current a:hover, #adminmenu a.wp-has-current-submenu:focus+.wp-submenu li.current a {
 	color: ' . $jkwhmhh_color_2_pre . ';
