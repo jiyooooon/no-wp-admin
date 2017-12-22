@@ -102,7 +102,6 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 .wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
     box-shadow: none;
 }
-
 .wp-core-ui .button-link {
     color: ' . $jkwhmhh_color_1 . ';
 }
@@ -136,7 +135,6 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 .wp-core-ui .attachment.details:focus, .wp-core-ui .attachment:focus, .wp-core-ui .selected.attachment:focus {
     box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
 }
-
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
     border-color: transparent;
