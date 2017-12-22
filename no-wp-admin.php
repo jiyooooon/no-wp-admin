@@ -113,6 +113,12 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
     color: ' . $jkwhmhh_color_1 . ';
     box-shadow: 0 0 0 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
 }
+.media-frame input[type=text]:focus, .media-frame input[type=password]:focus, .media-frame input[type=number]:focus, .media-frame input[type=search]:focus, .media-frame input[type=email]:focus, .media-frame input[type=url]:focus, .media-frame select:focus, .media-frame textarea:focus {
+    border-color: ' . hex2rgba($jkwhmhh_color_1,0.2) . ';
+}
+.media-frame a:active, .media-frame a:hover {
+    color: ' . $jkwhmhh_color_1 . ';
+}
 
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
