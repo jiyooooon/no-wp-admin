@@ -64,7 +64,6 @@ function add_custom_css_for_admin () {
 $check_jkwhmhh_color_1 = get_option('jkwhmhh_color_1');
 if (empty($check_jkwhmhh_color_1)) { $jkwhmhh_color_1 = '#0005FF'; $secondary_color = '#0050ff'; }
 else { $jkwhmhh_color_1 = get_option('jkwhmhh_color_1'); $secondary_color = hex2rgba($jkwhmhh_color_1,0.7); }
-
 $check_jkwhmhh_color_2 = get_option('jkwhmhh_color_2');
 if (empty($check_jkwhmhh_color_2)) {
 	$jkwhmhh_color_2_pre = '#3f444c';
@@ -85,6 +84,26 @@ echo '
 #wp-content-editor-tools {
     background-color: #f7f8fa;
 }
+
+input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, select:focus, textarea:focus {
+    border-color: ' . hex2rgba($jkwhmhh_color_1,0.25) . ';
+    box-shadow: 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+}
+.wp-core-ui .button-secondary:focus, .wp-core-ui .button.focus, .wp-core-ui .button:focus {
+    border-color: ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+    box-shadow: 0 0 3px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+}
+#contextual-help-back {
+    background: ' . hex2rgba($jkwhmhh_color_1,0.03) . ';
+}
+.contextual-help-tabs .active {
+    border-left: 2px solid ' . $jkwhmhh_color_1 . ';
+    background: ' . hex2rgba($jkwhmhh_color_1,0.03) . ';
+}
+.wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
+    box-shadow: none;
+}
+
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
     border-color: transparent;
