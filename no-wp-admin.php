@@ -119,6 +119,17 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 .media-frame a:active, .media-frame a:hover {
     color: ' . $jkwhmhh_color_1 . ';
 }
+.media-frame a:focus {
+    box-shadow: 0 0 0 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ';
+    color: ' . $jkwhmhh_color_1 . ';
+}
+.media-frame a {
+    color: ' . $jkwhmhh_color_1 . ';
+}
+.wp-core-ui .attachment.details .check, .wp-core-ui .attachment.selected .check:focus, .wp-core-ui .media-frame.mode-grid .attachment.selected .check {
+    background-color: ' . $jkwhmhh_color_1 . ';
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+}
 
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
