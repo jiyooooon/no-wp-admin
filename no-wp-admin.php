@@ -130,6 +130,12 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
     background-color: ' . $jkwhmhh_color_1 . ';
     box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
 }
+.wp-core-ui .attachment.details {
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+}
+.wp-core-ui .attachment.details:focus, .wp-core-ui .attachment:focus, .wp-core-ui .selected.attachment:focus {
+    box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+}
 
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
