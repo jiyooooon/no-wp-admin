@@ -84,7 +84,6 @@ echo '
 #wp-content-editor-tools {
     background-color: #f7f8fa;
 }
-
 input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, select:focus, textarea:focus {
     border-color: ' . hex2rgba($jkwhmhh_color_1,0.25) . ';
     box-shadow: 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
@@ -102,6 +101,17 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 }
 .wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
     box-shadow: none;
+}
+
+.wp-core-ui .button-link {
+    color: ' . $jkwhmhh_color_1 . ';
+}
+.wp-core-ui .button-link:active, .wp-core-ui .button-link:hover {
+    color: ' . hex2rgba($jkwhmhh_color_1,0.8) . ';
+}
+.wp-core-ui .button-link:focus {
+    color: ' . $jkwhmhh_color_1 . ';
+    box-shadow: 0 0 0 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
 }
 
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
