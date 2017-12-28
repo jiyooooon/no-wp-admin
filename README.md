@@ -31,7 +31,7 @@ A simple theme for wp-admin that uses your favorite color instead of WordPress
 
 - Upload logo
 - Select multiple colors
-- More themes
 - Customized login page
+- More themes
 
 Enjoy!
