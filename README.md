@@ -15,7 +15,6 @@ A simple theme for wp-admin that uses your favorite color instead of WordPress
 ## Features
 
 - Requires WordPress Version: 3.5 or higher
-- Compatible up to: 4.9.1
 - Select color using color picker
 - Replaces sender name/email from wordpress@yourdomain.com to website's name and admin's email
 - Disables XML-RPC for better security (prevent DDoS attacks)
