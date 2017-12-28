@@ -7,7 +7,7 @@ A simple theme for wp-admin that uses your favorite color instead of WordPress
 1) Download plugin [here](https://github.com/julieeeeeee/no-wp-admin/archive/master.zip)
 2) Login to your WordPress website
 3) Upload and activate plugin
-4) Click on 'Admin Settings'
+4) Click 'Admin Settings'
 5) Select your favorite your color
 6) Click 'Save Changes'
 7) Done :)
