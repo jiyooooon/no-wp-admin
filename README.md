@@ -26,7 +26,7 @@ A simple theme for wp-admin that uses your favorite color instead of WordPress
 
 [Theme 1]
 
-![alt text](https://github.com/julieeeeeee/no-wp-admin/blob/master/theme-1.png)
+![alt text](https://github.com/julieeeeeee/no-wp-admin/blob/master/theme-1-options.png)
 
 ## Features Coming Soon
 
