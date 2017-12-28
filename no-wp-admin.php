@@ -2,7 +2,7 @@
 /*
 Plugin Name: no-wp-admin
 Plugin URI: https://github.com/julieeeeeee/no-wp-admin/
-Description: A simple theme for wp-admin that uses your favorite color instead of WordPress
+Description: A simple theme for wp-admin that uses your logo and color schemes instead of WordPress
 Version: 1.0.0
 Author: Julie Kim
 Author URI: https://github.com/julieeeeeee/
@@ -71,7 +71,7 @@ if (empty($check_jkwhmhh_color_2)) {
 }
 else {
 	$jkwhmhh_color_2_pre = get_option('jkwhmhh_color_2');
-	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85); 
+	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85);
 }
 echo '
 <meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
@@ -852,39 +852,39 @@ function admin_settings_page() { ?>
 add_action("admin_menu", "add_admin_settings");
 function display_admin_settings() {
 
-	add_settings_section("admin_setting_section", "Set your logo and colors", "display_admin_setting_content", "admin-settings");
+	add_settings_section("admin_setting_section", "Select your favorite color", "display_admin_setting_content", "admin-settings");
 
-	add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
-	register_setting("admin_setting_section", "admin_logo");
+	//add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
+	//register_setting("admin_setting_section", "admin_logo");
 
-	add_settings_field("jkwhmhh_color_1", "Color #1", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
+	add_settings_field("jkwhmhh_color_1", "Color", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "jkwhmhh_color_1");
 
-	add_settings_field("jkwhmhh_color_2", "Color #2", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
-	register_setting("admin_setting_section", "jkwhmhh_color_2");
+	//add_settings_field("jkwhmhh_color_2", "", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
+	//register_setting("admin_setting_section", "jkwhmhh_color_2");
 
 }
 function display_admin_setting_content() { echo ""; }
-function display_admin_logo_form() { ?>
-<input type="text" name="admin_logo" id="admin_logo" value="<?php echo get_option('admin_logo'); ?>" />
+//function display_admin_logo_form() { ?>
+<!--<input type="text" name="admin_logo" id="admin_logo" value="<?php //echo get_option('admin_logo'); ?>" />-->
 <?php
-}
+//}
 function display_jkwhmhh_color_1() { ?>
 <input type="text" class="jkwhmhh_color_1" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
 <?php
 }
-function display_jkwhmhh_color_2() { ?>
-<input type="text" class="jkwhmhh_color_2" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php echo get_option('jkwhmhh_color_2'); ?>" />
+//function display_jkwhmhh_color_2() { ?>
+<!--<input type="text" class="jkwhmhh_color_2" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php //echo get_option('jkwhmhh_color_2'); ?>" />-->
 <?php
-}
+//}
 add_action("admin_init", "display_admin_settings");
 
 // WordPress Color Picker API
 add_action( 'admin_enqueue_scripts', 'add_color_picker' );
 function add_color_picker($hook) {
-     if( is_admin() ) {       
-        wp_enqueue_style( 'wp-color-picker' ); 
-        wp_enqueue_script( 'custom-script-handle', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+     if( is_admin() ) {
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'custom-script-handle', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
     }
 }
 
