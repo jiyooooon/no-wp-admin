@@ -8,7 +8,7 @@ A simple theme for wp-admin that uses your favorite color instead of WordPress
 2) Login to your WordPress website
 3) Upload and activate plugin
 4) Click 'Admin Settings'
-5) Select your favorite your color
+5) Select your favorite color
 6) Click 'Save Changes'
 7) Done :)
 
