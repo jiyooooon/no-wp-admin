@@ -2,7 +2,7 @@
 /*
 Plugin Name: no-wp-admin
 Plugin URI: https://github.com/julieeeeeee/no-wp-admin/
-Description: A simple theme for wp-admin that uses your logo and color schemes instead of WordPress
+Description: A simple theme for wp-admin that uses your favorite color instead of WordPress
 Version: 1.0.0
 Author: Julie Kim
 Author URI: https://github.com/julieeeeeee/
