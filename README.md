@@ -2,9 +2,6 @@
 
 A simple theme for wp-admin that uses your favorite color instead of WordPress
 
-## TEST
-hi
-
 ## How to install
 
 1) Download plugin [here](https://github.com/julieeeeeee/no-wp-admin/archive/master.zip)
