@@ -11,31 +11,31 @@ Text Domain: no-wp-admin
 */
 
 // change default wordpress email address
-function wpb_sender_email($original_email_address) {
+function jkwhmhh_sender_email($original_email_address) {
 	return get_option('admin_email');
 }
-function wpb_sender_name($original_email_from) {
+function jkwhmhh_sender_name($original_email_from) {
 	return get_option('blogname');
 }
-add_filter('wp_mail_from','wpb_sender_email');
-add_filter('wp_mail_from_name','wpb_sender_name');
+add_filter('wp_mail_from','jkwhmhh_sender_email');
+add_filter('wp_mail_from_name','jkwhmhh_sender_name');
 
 // disable XML-RPC
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
 // replace howdy
-function goodbye_howdy ($wp_admin_bar) {
-	$avatar = get_avatar(get_current_user_id(),16);
+function jkwhmhh_goodbye_howdy ($wp_admin_bar) {
+	$avatar = jkwhmhh_get_avatar(get_current_user_id(),16);
 	if (!$wp_admin_bar->get_node('my-account')) return;
 	$wp_admin_bar->add_node(array(
 		'id' => 'my-account',
 		'title' => sprintf(wp_get_current_user()->display_name) . $avatar
     ));
 }
-add_action('admin_bar_menu','goodbye_howdy');
+add_action('admin_bar_menu','jkwhmhh_goodbye_howdy');
 
 // convert hexdec color string to rgba
-function hex2rgba($color, $opacity = false) {
+function jkwhmhh_hex2rgba($color, $opacity = false) {
 	$default = 'rgb(0,0,0)';
 	if(empty($color)) return $default;
 	if ($color[0] == '#' ) {$color = substr( $color, 1 );}
@@ -58,20 +58,20 @@ function hex2rgba($color, $opacity = false) {
 }
 
 // adds custom css for wp-admin
-add_action('admin_head','add_custom_css_for_admin');
-function add_custom_css_for_admin () {
+add_action('admin_head','jkwhmhh_add_custom_css_for_admin');
+function jkwhmhh_add_custom_css_for_admin () {
 
 $check_jkwhmhh_color_1 = get_option('jkwhmhh_color_1');
 if (empty($check_jkwhmhh_color_1)) { $jkwhmhh_color_1 = '#0005FF'; $secondary_color = '#0050ff'; }
-else { $jkwhmhh_color_1 = get_option('jkwhmhh_color_1'); $secondary_color = hex2rgba($jkwhmhh_color_1,0.7); }
+else { $jkwhmhh_color_1 = get_option('jkwhmhh_color_1'); $secondary_color = jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7); }
 $check_jkwhmhh_color_2 = get_option('jkwhmhh_color_2');
 if (empty($check_jkwhmhh_color_2)) {
 	$jkwhmhh_color_2_pre = '#3f444c';
-	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85);
+	$jkwhmhh_color_2 = jkwhmhh_hex2rgba($jkwhmhh_color_2_pre,0.85);
 }
 else {
 	$jkwhmhh_color_2_pre = get_option('jkwhmhh_color_2');
-	$jkwhmhh_color_2 = hex2rgba($jkwhmhh_color_2_pre,0.85);
+	$jkwhmhh_color_2 = jkwhmhh_hex2rgba($jkwhmhh_color_2_pre,0.85);
 }
 echo '
 <meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
@@ -85,19 +85,19 @@ echo '
     background-color: #f7f8fa;
 }
 input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, select:focus, textarea:focus {
-    border-color: ' . hex2rgba($jkwhmhh_color_1,0.25) . ';
-    box-shadow: 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ';
+    box-shadow: 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
 }
 .wp-core-ui .button-secondary:focus, .wp-core-ui .button.focus, .wp-core-ui .button:focus {
-    border-color: ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
-    box-shadow: 0 0 3px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
+    box-shadow: 0 0 3px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
 }
 #contextual-help-back {
-    background: ' . hex2rgba($jkwhmhh_color_1,0.03) . ';
+    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.03) . ';
 }
 .contextual-help-tabs .active {
     border-left: 2px solid ' . $jkwhmhh_color_1 . ';
-    background: ' . hex2rgba($jkwhmhh_color_1,0.03) . ';
+    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.03) . ';
 }
 .wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
     box-shadow: none;
@@ -106,20 +106,20 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
     color: ' . $jkwhmhh_color_1 . ';
 }
 .wp-core-ui .button-link:active, .wp-core-ui .button-link:hover {
-    color: ' . hex2rgba($jkwhmhh_color_1,0.8) . ';
+    color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.8) . ';
 }
 .wp-core-ui .button-link:focus {
     color: ' . $jkwhmhh_color_1 . ';
-    box-shadow: 0 0 0 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . hex2rgba($jkwhmhh_color_1,0.7) . ';
+    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
 }
 .media-frame input[type=text]:focus, .media-frame input[type=password]:focus, .media-frame input[type=number]:focus, .media-frame input[type=search]:focus, .media-frame input[type=email]:focus, .media-frame input[type=url]:focus, .media-frame select:focus, .media-frame textarea:focus {
-    border-color: ' . hex2rgba($jkwhmhh_color_1,0.2) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.2) . ';
 }
 .media-frame a:active, .media-frame a:hover {
     color: ' . $jkwhmhh_color_1 . ';
 }
 .media-frame a:focus {
-    box-shadow: 0 0 0 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . hex2rgba($jkwhmhh_color_1,0.25) . ';
+    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ';
     color: ' . $jkwhmhh_color_1 . ';
 }
 .media-frame a {
@@ -127,13 +127,13 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 }
 .wp-core-ui .attachment.details .check, .wp-core-ui .attachment.selected .check:focus, .wp-core-ui .media-frame.mode-grid .attachment.selected .check {
     background-color: ' . $jkwhmhh_color_1 . ';
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
 }
 .wp-core-ui .attachment.details {
-    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
 }
 .wp-core-ui .attachment.details:focus, .wp-core-ui .attachment:focus, .wp-core-ui .selected.attachment:focus {
-    box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . hex2rgba($jkwhmhh_color_1,0.5) . ';
+    box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
 }
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
     background: ' . $jkwhmhh_color_1 . ';
@@ -530,8 +530,8 @@ div.wp-menu-image:before {
 }
 
 // adds custom css to wp-admin elements on frontend
-add_action('wp_head', 'add_custom_css_frontend');
-function add_custom_css_frontend () {
+add_action('wp_head', 'jkwhmhh_add_custom_css_for_frontend');
+function jkwhmhh_add_custom_css_for_frontend () {
 echo '
 <meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
 <meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
@@ -629,17 +629,17 @@ html.wp-toolbar {
 }
 
 // local avatar
-class simple_local_avatars {
-    function simple_local_avatars() {
-        add_filter('get_avatar', array($this, 'get_avatar'), 10, 5);
-        add_action('admin_init', array($this, 'admin_init'));
-        add_action('show_user_profile', array($this, 'edit_user_profile'));
-        add_action('edit_user_profile', array($this, 'edit_user_profile'));
-        add_action('personal_options_update', array($this, 'edit_user_profile_update'));
-        add_action('edit_user_profile_update', array($this, 'edit_user_profile_update'));
-        add_filter('avatar_defaults', array($this, 'avatar_defaults'));
+class jkwhmhh_local_avatars {
+    function jkwhmhh_local_avatars() {
+        add_filter('jkwhmhh_get_avatar', array($this, 'jkwhmhh_get_avatar'), 10, 5);
+        add_action('admin_init', array($this, 'jkwhmhh_init'));
+        add_action('show_user_profile', array($this, 'jkwhmhh_edit_user_profile'));
+        add_action('jkwhmhh_edit_user_profile', array($this, 'jkwhmhh_edit_user_profile'));
+        add_action('personal_options_update', array($this, 'jkwhmhh_edit_user_profile_update'));
+        add_action('jkwhmhh_edit_user_profile_update', array($this, 'jkwhmhh_edit_user_profile_update'));
+        add_filter('jkwhmhh_avatar_defaults', array($this, 'jkwhmhh_avatar_defaults'));
     }
-    function get_avatar($avatar = '', $id_or_email, $size = '96', $default = '', $alt = false) {
+    function jkwhmhh_get_avatar($avatar = '', $id_or_email, $size = '96', $default = '', $alt = false) {
         if (is_numeric($id_or_email))
             $user_id = (int) $id_or_email;
         elseif (is_string($id_or_email)) {
@@ -652,9 +652,9 @@ class simple_local_avatars {
         if (!isset($local_avatars) || empty($local_avatars) || !isset($local_avatars['full'])) {
             if (!empty($avatar))
                 return $avatar;
-            remove_filter('get_avatar', 'get_simple_local_avatar');
-            $avatar = get_avatar($id_or_email, $size, $default);
-            add_filter('get_avatar', 'get_simple_local_avatar', 10, 5);
+            remove_filter('jkwhmhh_get_avatar', 'jkwhmhh_get_simple_local_avatar');
+            $avatar = jkwhmhh_get_avatar($id_or_email, $size, $default);
+            add_filter('jkwhmhh_get_avatar', 'jkwhmhh_get_simple_local_avatar', 10, 5);
             return $avatar;
         }
         if (!is_numeric($size))
@@ -676,37 +676,37 @@ class simple_local_avatars {
         $avatar = "<img alt='" . esc_attr($alt) . "' src='" . $local_avatars[$size] . "' class='avatar avatar-{$size}{$author_class} photo' height='{$size}' width='{$size}' />";
         return $avatar;
     }
-    function admin_init() {
+    function jkwhmhh_init() {
         load_plugin_textdomain('simple-local-avatars', false, dirname(plugin_basename(__FILE__)) . '/localization/');
-        register_setting('discussion', 'simple_local_avatars_caps', array($this, 'sanitize_options'));
-        add_settings_field('simple-local-avatars-caps', __('Avatar Permissions', 'simple-local-avatars'), array($this, 'avatar_settings_field'), 'discussion', 'avatars');
+        register_setting('discussion', 'jkwhmhh_local_avatars_caps', array($this, 'jkwhmhh_sanitize_options'));
+        add_settings_field('simple-local-avatars-caps', __('Avatar Permissions', 'simple-local-avatars'), array($this, 'jkwhmhh_avatar_settings_field'), 'discussion', 'avatars');
     }
-    function sanitize_options($input) {
-        $new_input['simple_local_avatars_caps'] = empty($input['simple_local_avatars_caps']) ? 0 : 1;
+    function jkwhmhh_sanitize_options($input) {
+        $new_input['jkwhmhh_local_avatars_caps'] = empty($input['jkwhmhh_local_avatars_caps']) ? 0 : 1;
         return $new_input;
     }
-    function avatar_settings_field($args) {
-        $options = get_option('simple_local_avatars_caps');
+    function jkwhmhh_avatar_settings_field($args) {
+        $options = get_option('jkwhmhh_local_avatars_caps');
         echo '
-            <label for="simple_local_avatars_caps">
-                <input type="checkbox" name="simple_local_avatars_caps" id="simple_local_avatars_caps" value="1" ' . @checked($options['simple_local_avatars_caps'], 1, false) . ' />
+            <label for="jkwhmhh_local_avatars_caps">
+                <input type="checkbox" name="jkwhmhh_local_avatars_caps" id="jkwhmhh_local_avatars_caps" value="1" ' . @checked($options['jkwhmhh_local_avatars_caps'], 1, false) . ' />
                 ' . __('Only allow staff to upload avatars', 'simple-local-avatars') . '
             </label>
         ';
     }
-    function edit_user_profile($profileuser) {
+    function jkwhmhh_edit_user_profile($profileuser) {
         ?>
         <h3><?php _e('Profile Picture', 'simple-local-avatars'); ?></h3>
         <table class="form-table">
             <tr>
                 <th><label for="simple-local-avatar"><?php _e('Upload', 'simple-local-avatars'); ?></label></th>
                 <td style="width: 50px;" valign="top">
-                    <?php echo get_avatar($profileuser->ID); ?>
+                    <?php echo jkwhmhh_get_avatar($profileuser->ID); ?>
                 </td>
                 <td>
                     <?php
-                    $options = get_option('simple_local_avatars_caps');
-                    if (empty($options['simple_local_avatars_caps']) || current_user_can('upload_files')) {
+                    $options = get_option('jkwhmhh_local_avatars_caps');
+                    if (empty($options['jkwhmhh_local_avatars_caps']) || current_user_can('upload_files')) {
                         do_action('simple_local_avatar_notices');
                         wp_nonce_field('simple_local_avatar_nonce', '_simple_local_avatar_nonce', false);
                     ?>
@@ -736,7 +736,7 @@ class simple_local_avatars {
         </script>
         <?php
     }
-    function edit_user_profile_update($user_id) {
+    function jkwhmhh_edit_user_profile_update($user_id) {
         if (!wp_verify_nonce($_POST['_simple_local_avatar_nonce'], 'simple_local_avatar_nonce')) //security
             return;
         if (!empty($_FILES['simple-local-avatar']['name'])) {
@@ -759,18 +759,18 @@ class simple_local_avatars {
                 }
                 return;
             }
-            $this->avatar_delete($user_id); // delete old images if successful
+            $this->jkwhmhh_avatar_delete($user_id); // delete old images if successful
             update_user_meta($user_id, 'simple_local_avatar', array('full' => $avatar['url'])); // save user information (overwriting old)
         } elseif (isset($_POST['simple-local-avatar-erase']) && $_POST['simple-local-avatar-erase'] == 1)
-            $this->avatar_delete($user_id);
+            $this->jkwhmhh_avatar_delete($user_id);
     }
-    // remove the custom get_avatar hook for the default avatar list output on options-discussion.php
-    function avatar_defaults($avatar_defaults) {
-        remove_action('get_avatar', array($this, 'get_avatar'));
-        return $avatar_defaults;
+    // remove the custom jkwhmhh_get_avatar hook for the default avatar list output on options-discussion.php
+    function jkwhmhh_avatar_defaults($jkwhmhh_avatar_defaults) {
+        remove_action('jkwhmhh_get_avatar', array($this, 'jkwhmhh_get_avatar'));
+        return $jkwhmhh_avatar_defaults;
     }
     // delete avatars based on user_id
-    function avatar_delete($user_id) {
+    function jkwhmhh_avatar_delete($user_id) {
         $old_avatars = get_user_meta($user_id, 'simple_local_avatar', true);
         $upload_path = wp_upload_dir();
         if (is_array($old_avatars)) {
@@ -782,61 +782,61 @@ class simple_local_avatars {
         delete_user_meta($user_id, 'simple_local_avatar');
     }
 }
-$simple_local_avatars = new simple_local_avatars;
-if (!function_exists('get_simple_local_avatar')):
-	function get_simple_local_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
-		global $simple_local_avatars;
-		return $simple_local_avatars->get_avatar('', $id_or_email, $size, $default, $alt);
+$jkwhmhh_local_avatars = new jkwhmhh_local_avatars;
+if (!function_exists('jkwhmhh_get_simple_local_avatar')):
+	function jkwhmhh_get_simple_local_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
+		global $jkwhmhh_local_avatars;
+		return $jkwhmhh_local_avatars->jkwhmhh_get_avatar('', $id_or_email, $size, $default, $alt);
 	}
 endif;
-register_uninstall_hook(__FILE__, 'simple_local_avatars_uninstall');
-function simple_local_avatars_uninstall() {
-    $simple_local_avatars = new simple_local_avatars;
+register_uninstall_hook(__FILE__, 'jkwhmhh_local_avatars_uninstall');
+function jkwhmhh_local_avatars_uninstall() {
+    $jkwhmhh_local_avatars = new jkwhmhh_local_avatars;
     $users = get_users_of_blog();
     foreach ($users as $user)
-		$simple_local_avatars->avatar_delete($user->user_id);
-    delete_option('simple_local_avatars_caps');
+		$jkwhmhh_local_avatars->jkwhmhh_avatar_delete($user->user_id);
+    delete_option('jkwhmhh_local_avatars_caps');
 }
-if (!function_exists('get_avatar')):
-function get_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
+if (!function_exists('jkwhmhh_get_avatar')):
+function jkwhmhh_get_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
     if (!get_option('show_avatars')) return false;
     static $default_url;
-    if (!isset($default_url)) $default_url = 'https://i.imgur.com/TTb5ZnD.jpg';
+    if (!isset($default_url)) $default_url = plugins_url( 'default.jpg', __FILE__ );
     if (false === $alt) $safe_alt = '';
     else $safe_alt = esc_attr($alt);
     if (!is_numeric($size)) $size = '96';
     $avatar = "<img alt='{$safe_alt}' src='{$default_url}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
-    return apply_filters('get_avatar', $avatar, $id_or_email, $size, $default, $alt);
+    return apply_filters('jkwhmhh_get_avatar', $avatar, $id_or_email, $size, $default, $alt);
 }
 endif;
-function __limit_default_avatars_setting($default) {
+function jkwhmhh_limit_default_avatars_setting($default) {
 	return 'local_default';
 }
-add_filter('pre_option_avatar_default','__limit_default_avatars_setting');
+add_filter('pre_option_avatar_default','jkwhmhh_limit_default_avatars_setting');
 if (is_admin()):
-function __limit_default_avatars($defaults) {
+function jkwhmhh_limit_default_avatars($defaults) {
 	return array('local_default' => get_bloginfo('name') . ' Default');
 }
-add_filter('avatar_defaults','__limit_default_avatars');
+add_filter('jkwhmhh_avatar_defaults','jkwhmhh_limit_default_avatars');
 endif;
-function __my_theme_default_avatar($url) {
-	return 'https://i.imgur.com/TTb5ZnD.jpg';
+function jkwhmhh_my_theme_default_avatar($url) {
+	return plugins_url( 'default.jpg', __FILE__ );
 }
-add_filter('local_default_avatar','__my_theme_default_avatar');
+add_filter('local_default_avatar','jkwhmhh_my_theme_default_avatar');
 
 // Admin Settings
-function add_admin_settings() {
+function jkwhmhh_add_admin_settings() {
 	add_menu_page(
 		"Admin Settings",
 		"Admin Settings",
 		"manage_options",
 		"admin-settings",
-		"admin_settings_page",
+		"jkwhmhh_admin_settings_page",
 		"dashicons-art",
 		100
 	);
 }
-function admin_settings_page() { ?>
+function jkwhmhh_admin_settings_page() { ?>
 	<div class="wrap">
 		<h1>Admin Settings</h1>
 		<form method="post" action="options.php">
@@ -849,39 +849,39 @@ function admin_settings_page() { ?>
 	</div>
 <?php
 }
-add_action("admin_menu", "add_admin_settings");
-function display_admin_settings() {
+add_action("admin_menu", "jkwhmhh_add_admin_settings");
+function jkwhmhh_display_admin_settings() {
 
-	add_settings_section("admin_setting_section", "Select your favorite color", "display_admin_setting_content", "admin-settings");
+	add_settings_section("admin_setting_section", "Select your favorite color", "jkwhmhh_display_admin_setting_content", "admin-settings");
 
 	//add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
 	//register_setting("admin_setting_section", "admin_logo");
 
-	add_settings_field("jkwhmhh_color_1", "Color", "display_jkwhmhh_color_1", "admin-settings", "admin_setting_section");
+	add_settings_field("jkwhmhh_color_1", "Color", "jkwhmhh_display_color_1", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "jkwhmhh_color_1");
 
-	//add_settings_field("jkwhmhh_color_2", "", "display_jkwhmhh_color_2", "admin-settings", "admin_setting_section");
+	//add_settings_field("jkwhmhh_color_2", "", "jkwhmhh_display_color_2", "admin-settings", "admin_setting_section");
 	//register_setting("admin_setting_section", "jkwhmhh_color_2");
 
 }
-function display_admin_setting_content() { echo ""; }
+function jkwhmhh_display_admin_setting_content() { echo ""; }
 //function display_admin_logo_form() { ?>
 <!--<input type="text" name="admin_logo" id="admin_logo" value="<?php //echo get_option('admin_logo'); ?>" />-->
 <?php
 //}
-function display_jkwhmhh_color_1() { ?>
+function jkwhmhh_display_color_1() { ?>
 <input type="text" class="jkwhmhh_color_1" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
 <?php
 }
-//function display_jkwhmhh_color_2() { ?>
+//function jkwhmhh_display_color_2() { ?>
 <!--<input type="text" class="jkwhmhh_color_2" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php //echo get_option('jkwhmhh_color_2'); ?>" />-->
 <?php
 //}
-add_action("admin_init", "display_admin_settings");
+add_action("admin_init", "jkwhmhh_display_admin_settings");
 
 // WordPress Color Picker API
-add_action( 'admin_enqueue_scripts', 'add_color_picker' );
-function add_color_picker($hook) {
+add_action( 'admin_enqueue_scripts', 'jkwhmhh_add_color_picker' );
+function jkwhmhh_add_color_picker($hook) {
      if( is_admin() ) {
         wp_enqueue_style( 'wp-color-picker' );
         wp_enqueue_script( 'custom-script-handle', plugins_url( 'color-picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
