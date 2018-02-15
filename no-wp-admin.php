@@ -34,6 +34,31 @@ function jkwhmhh_remove_howdy ($wp_admin_bar) {
 }
 add_action('admin_bar_menu','jkwhmhh_remove_howdy');
 
+// remove all items except: site-name and my-account on admin bar (Credit: Luiz Paulo "Bills" https://github.com/luizbills)
+add_action( 'admin_bar_menu', 'custom_remove_admin_bar_items', 999);
+function custom_remove_admin_bar_items () {
+	global $wp_admin_bar; 
+	if ( !is_object( $wp_admin_bar ) ) return;
+	// dont remove items from this list
+	$whitelist = [
+		'site-name',
+		'menu-toggle',
+		'my-account',
+		'user-actions',
+		'user-info',
+		'edit-profile',
+		'logout',
+	];
+	//echo '<pre>' . print_r( $wp_admin_bar, true ) . '</pre>';
+	$nodes = $wp_admin_bar->get_nodes();
+	foreach( $nodes as $node ) {
+		if ( $node->group ) continue;
+		if( false === in_array( $node->id, $whitelist ) ) {
+			$wp_admin_bar->remove_menu( $node->id );
+		}           
+	}
+}
+
 // convert hexdec color string to rgba
 function jkwhmhh_hex2rgba($color, $opacity = false) {
 	$default = 'rgb(0,0,0)';
@@ -532,6 +557,19 @@ div.wp-menu-image:before {
 // adds custom css to wp-admin elements on frontend
 add_action('wp_head', 'jkwhmhh_add_css_frontend');
 function jkwhmhh_add_css_frontend () {
+	$check_jkwhmhh_color_one = get_option('jkwhmhh_color_one');
+	if (empty($check_jkwhmhh_color_one)) {
+		$jkwhmhh_color_one = '#0005FF';
+		$jkwhmhh_color_two = '#0050ff';
+		$jkwhmhh_color_three = '#3f444c';
+		$jkwhmhh_color_four = jkwhmhh_hex2rgba($jkwhmhh_color_three,0.85);
+	}
+	else {
+		$jkwhmhh_color_one = get_option('jkwhmhh_color_one');
+		$jkwhmhh_color_two = jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7);
+		$jkwhmhh_color_three = '#3f444c';
+		$jkwhmhh_color_four = jkwhmhh_hex2rgba($jkwhmhh_color_three,0.85);
+	}
 echo '
 <meta name="msapplication-TileColor" content="' . $jkwhmhh_color_one . '">
 <meta name="theme-color" content="' . $jkwhmhh_color_one . '">
@@ -737,6 +775,8 @@ class jkwhmhh_local_avatars {
         <?php
     }
     function jkwhmhh_edit_user_profile_update($user_id) {
+
+
         if (!wp_verify_nonce($_POST['_simple_local_avatar_nonce'], 'simple_local_avatar_nonce')) //security
             return;
         if (!empty($_FILES['simple-local-avatar']['name'])) {
@@ -851,32 +891,16 @@ function jkwhmhh_admin_settings_page() { ?>
 }
 add_action("admin_menu", "jkwhmhh_add_admin_settings");
 function jkwhmhh_display_admin_settings() {
-
 	add_settings_section("admin_setting_section", "Select your favorite color", "jkwhmhh_display_admin_setting_content", "admin-settings");
-
-	//add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
-	//register_setting("admin_setting_section", "admin_logo");
 
 	add_settings_field("jkwhmhh_color_one", "Color", "jkwhmhh_display_color_1", "admin-settings", "admin_setting_section");
 	register_setting("admin_setting_section", "jkwhmhh_color_one");
-
-	//add_settings_field("jkwhmhh_color_four", "", "jkwhmhh_display_color_2", "admin-settings", "admin_setting_section");
-	//register_setting("admin_setting_section", "jkwhmhh_color_four");
-
 }
 function jkwhmhh_display_admin_setting_content() { echo ""; }
-//function display_admin_logo_form() { ?>
-<!--<input type="text" name="admin_logo" id="admin_logo" value="<?php //echo get_option('admin_logo'); ?>" />-->
-<?php
-//}
 function jkwhmhh_display_color_1() { ?>
 <input type="text" class="jkwhmhh_color_one" name="jkwhmhh_color_one" id="jkwhmhh_color_one" value="<?php echo get_option('jkwhmhh_color_one'); ?>" />
 <?php
 }
-//function jkwhmhh_display_color_2() { ?>
-<!--<input type="text" class="jkwhmhh_color_four" name="jkwhmhh_color_four" id="jkwhmhh_color_four" value="<?php //echo get_option('jkwhmhh_color_four'); ?>" />-->
-<?php
-//}
 add_action("admin_init", "jkwhmhh_display_admin_settings");
 
 // WordPress Color Picker API
