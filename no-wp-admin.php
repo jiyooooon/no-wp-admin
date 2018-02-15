@@ -24,15 +24,15 @@ add_filter('wp_mail_from_name','jkwhmhh_sender_name');
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
 // replace howdy
-function jkwhmhh_goodbye_howdy ($wp_admin_bar) {
-	$avatar = jkwhmhh_get_avatar(get_current_user_id(),16);
+function jkwhmhh_remove_howdy ($wp_admin_bar) {
+	$avatar = get_avatar(get_current_user_id(),16);
 	if (!$wp_admin_bar->get_node('my-account')) return;
 	$wp_admin_bar->add_node(array(
 		'id' => 'my-account',
 		'title' => sprintf(wp_get_current_user()->display_name) . $avatar
     ));
 }
-add_action('admin_bar_menu','jkwhmhh_goodbye_howdy');
+add_action('admin_bar_menu','jkwhmhh_remove_howdy');
 
 // convert hexdec color string to rgba
 function jkwhmhh_hex2rgba($color, $opacity = false) {
@@ -58,24 +58,24 @@ function jkwhmhh_hex2rgba($color, $opacity = false) {
 }
 
 // adds custom css for wp-admin
-add_action('admin_head','jkwhmhh_add_custom_css_for_admin');
-function jkwhmhh_add_custom_css_for_admin () {
-
-$check_jkwhmhh_color_1 = get_option('jkwhmhh_color_1');
-if (empty($check_jkwhmhh_color_1)) { $jkwhmhh_color_1 = '#0005FF'; $secondary_color = '#0050ff'; }
-else { $jkwhmhh_color_1 = get_option('jkwhmhh_color_1'); $secondary_color = jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7); }
-$check_jkwhmhh_color_2 = get_option('jkwhmhh_color_2');
-if (empty($check_jkwhmhh_color_2)) {
-	$jkwhmhh_color_2_pre = '#3f444c';
-	$jkwhmhh_color_2 = jkwhmhh_hex2rgba($jkwhmhh_color_2_pre,0.85);
+add_action('admin_head','jkwhmhh_add_css_backend');
+function jkwhmhh_add_css_backend () {
+$check_jkwhmhh_color_one = get_option('jkwhmhh_color_one');
+if (empty($check_jkwhmhh_color_one)) {
+	$jkwhmhh_color_one = '#0005FF';
+	$jkwhmhh_color_two = '#0050ff';
+	$jkwhmhh_color_three = '#3f444c';
+	$jkwhmhh_color_four = jkwhmhh_hex2rgba($jkwhmhh_color_three,0.85);
 }
 else {
-	$jkwhmhh_color_2_pre = get_option('jkwhmhh_color_2');
-	$jkwhmhh_color_2 = jkwhmhh_hex2rgba($jkwhmhh_color_2_pre,0.85);
+	$jkwhmhh_color_one = get_option('jkwhmhh_color_one');
+	$jkwhmhh_color_two = jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7);
+	$jkwhmhh_color_three = '#3f444c';
+	$jkwhmhh_color_four = jkwhmhh_hex2rgba($jkwhmhh_color_three,0.85);
 }
 echo '
-<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
-<meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
+<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_one . '">
+<meta name="theme-color" content="' . $jkwhmhh_color_one . '">
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 <style>
 .wpt-form-textarea {
@@ -85,72 +85,72 @@ echo '
     background-color: #f7f8fa;
 }
 input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input[type=tel]:focus, input[type=time]:focus, input[type=url]:focus, input[type=week]:focus, input[type=password]:focus, input[type=checkbox]:focus, input[type=color]:focus, input[type=date]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=email]:focus, input[type=month]:focus, input[type=number]:focus, select:focus, textarea:focus {
-    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ';
-    box-shadow: 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.25) . ';
+    box-shadow: 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7) . ';
 }
 .wp-core-ui .button-secondary:focus, .wp-core-ui .button.focus, .wp-core-ui .button:focus {
-    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
-    box-shadow: 0 0 3px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7) . ';
+    box-shadow: 0 0 3px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7) . ';
 }
 #contextual-help-back {
-    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.03) . ';
+    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.03) . ';
 }
 .contextual-help-tabs .active {
-    border-left: 2px solid ' . $jkwhmhh_color_1 . ';
-    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.03) . ';
+    border-left: 2px solid ' . $jkwhmhh_color_one . ';
+    background: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.03) . ';
 }
 .wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
     box-shadow: none;
 }
 .wp-core-ui .button-link {
-    color: ' . $jkwhmhh_color_1 . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .wp-core-ui .button-link:active, .wp-core-ui .button-link:hover {
-    color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.8) . ';
+    color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.8) . ';
 }
 .wp-core-ui .button-link:focus {
-    color: ' . $jkwhmhh_color_1 . ';
-    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.7) . ';
+    color: ' . $jkwhmhh_color_one . ';
+    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.7) . ';
 }
 .media-frame input[type=text]:focus, .media-frame input[type=password]:focus, .media-frame input[type=number]:focus, .media-frame input[type=search]:focus, .media-frame input[type=email]:focus, .media-frame input[type=url]:focus, .media-frame select:focus, .media-frame textarea:focus {
-    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.2) . ';
+    border-color: ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.2) . ';
 }
 .media-frame a:active, .media-frame a:hover {
-    color: ' . $jkwhmhh_color_1 . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .media-frame a:focus {
-    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.25) . ';
-    color: ' . $jkwhmhh_color_1 . ';
+    box-shadow: 0 0 0 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.25) . ', 0 0 2px 1px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.25) . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .media-frame a {
-    color: ' . $jkwhmhh_color_1 . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .wp-core-ui .attachment.details .check, .wp-core-ui .attachment.selected .check:focus, .wp-core-ui .media-frame.mode-grid .attachment.selected .check {
-    background-color: ' . $jkwhmhh_color_1 . ';
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
+    background-color: ' . $jkwhmhh_color_one . ';
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 2px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.5) . ';
 }
 .wp-core-ui .attachment.details {
-    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.5) . ';
 }
 .wp-core-ui .attachment.details:focus, .wp-core-ui .attachment:focus, .wp-core-ui .selected.attachment:focus {
-    box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_1,0.5) . ';
+    box-shadow: inset 0 0 2px 3px #fff, inset 0 0 0 7px ' . jkwhmhh_hex2rgba($jkwhmhh_color_one,0.5) . ';
 }
 .wp-core-ui .button-primary.active, .wp-core-ui .button-primary.active:focus, .wp-core-ui .button-primary.active:hover, .wp-core-ui .button-primary:active {
-    background: ' . $jkwhmhh_color_1 . ';
+    background: ' . $jkwhmhh_color_one . ';
     border-color: transparent;
-    box-shadow: inset 0 2px 0 ' . $jkwhmhh_color_1 . ';
+    box-shadow: inset 0 2px 0 ' . $jkwhmhh_color_one . ';
 }
 .notice-info {
-    border-left-color: ' . $jkwhmhh_color_1 . ';
+    border-left-color: ' . $jkwhmhh_color_one . ';
 }
 .theme-browser .theme.active .theme-name {
-    background: ' . $jkwhmhh_color_2_pre . '; box-shadow: none;
+    background: ' . $jkwhmhh_color_three . '; box-shadow: none;
 }
 .theme-browser .theme.active .theme-actions {
-    background: ' . $jkwhmhh_color_2 . ';
+    background: ' . $jkwhmhh_color_four . ';
 }
 .filter-count .count, .title-count {
-    background: ' . $jkwhmhh_color_2 . ';
+    background: ' . $jkwhmhh_color_four . ';
 }
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04), 0 0 2px 1px rgba(0, 0, 0, 0.2);
@@ -166,24 +166,24 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 }
 #minor-publishing-actions .button {
 	color: #fff;
-	background-color: ' . $secondary_color . ';
-	border-color: ' . $secondary_color . ';
+	background-color: ' . $jkwhmhh_color_two . ';
+	border-color: ' . $jkwhmhh_color_two . ';
 	-webkit-box-shadow: 0 1px 0 #ccc;
 	box-shadow: 0 1px 0 #ccc;
 	vertical-align: top;
 }
 #minor-publishing-actions .button:hover {
-	background: ' . $jkwhmhh_color_1 . ';
-	border-color: ' . $jkwhmhh_color_1 . ';
+	background: ' . $jkwhmhh_color_one . ';
+	border-color: ' . $jkwhmhh_color_one . ';
 }
 .view-switch a.current:before {
-    color: ' . $jkwhmhh_color_1 . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .column-comments .post-com-count-approved:focus .comment-count-approved, .column-comments .post-com-count-approved:hover .comment-count-approved, .column-response .post-com-count-approved:focus .comment-count-approved, .column-response .post-com-count-approved:hover .comment-count-approved {
-    background: ' . $jkwhmhh_color_1 . ';
+    background: ' . $jkwhmhh_color_one . ';
 }
 .column-comments .post-com-count-approved:focus:after, .column-comments .post-com-count-approved:hover:after, .column-response .post-com-count-approved:focus:after, .column-response .post-com-count-approved:hover:after {
-    border-top-color: ' . $jkwhmhh_color_1 . ';
+    border-top-color: ' . $jkwhmhh_color_one . ';
 }
 #adminmenu .wp-has-current-submenu ul>li>a, .folded #adminmenu li.menu-top .wp-submenu>li>a {
 	padding: 6px 0px 6px 37px;
@@ -197,7 +197,7 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 }
 .wp-core-ui .button-primary-disabled, .wp-core-ui .button-primary.disabled, .wp-core-ui .button-primary:disabled, .wp-core-ui .button-primary[disabled] {
 	color: #d2d2d2!important;
-	background: ' . $secondary_color . '!important;
+	background: ' . $jkwhmhh_color_two . '!important;
 	border-color: transparent!important;
 }
 #reg_passmail {
@@ -224,7 +224,7 @@ input[type=text]:focus, input[type=search]:focus, input[type=radio]:focus, input
 }
 #adminmenu li>a.menu-top:focus {
 	position: relative;
-	background-color: ' . $jkwhmhh_color_2 . ';
+	background-color: ' . $jkwhmhh_color_four . ';
 	color: #fff;
 }
 #adminmenu {
@@ -299,10 +299,10 @@ body {
 	line-height: 1.4em;
 }
 input[type=radio]:checked:before {
-	background-color: ' . $jkwhmhh_color_1 . ';
+	background-color: ' . $jkwhmhh_color_one . ';
 }
 input[type=checkbox]:checked:before {
-	color: ' . $jkwhmhh_color_1 . ';
+	color: ' . $jkwhmhh_color_one . ';
 }
 .postbox .inside h2, .wrap [class$=icon32]+h2, .wrap h1, .wrap>h2:first-child {
 	margin: 0;
@@ -321,7 +321,7 @@ h1, h2, h3 {
 	color: #000;
 }
 .plugin-update-tr.active td, .plugins .active th.check-column {
-	border-left: 4px solid ' . $jkwhmhh_color_1 . ';
+	border-left: 4px solid ' . $jkwhmhh_color_one . ';
 }
 #menu-management .menu-edit, #menu-settings-column .accordion-container, .comment-ays, .feature-filter, .imgedit-group, .manage-menus, .menu-item-handle, .popular-tags, .stuffbox, .widget-inside, .widget-top, .widgets-holder-wrap, .wp-editor-container, p.popular-tags, table.widefat {
 	border: inherit;
@@ -336,14 +336,14 @@ h1, h2, h3 {
 	background-color: #fff;
 }
 #adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.wp-has-current-submenu {
-	background: ' . $jkwhmhh_color_2 . ';
+	background: ' . $jkwhmhh_color_four . ';
 	color: #ffffff;
 }
 #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
 	background-color: #e6e7e8;
 }
 #adminmenu a {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .wp-submenu a {
 	color: rgba(63, 68, 76, 0.7);
@@ -352,7 +352,7 @@ h1, h2, h3 {
 	background-color: #dfe0e2;
 }
 #adminmenu div.wp-menu-image:before {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .wp-submenu .wp-submenu-head {
 	color: rgba(63, 68, 76, 0.7);
@@ -364,10 +364,10 @@ h1, h2, h3 {
 }
 #adminmenu li a.wp-has-current-submenu .update-plugins, #adminmenu li.current a .awaiting-mod {
 	background-color: rgb(230, 231, 232);
-	color: ' . $jkwhmhh_color_2 . ';
+	color: ' . $jkwhmhh_color_four . ';
 }
 .wp-core-ui .button-primary {
-	background: ' . $secondary_color . ';
+	background: ' . $jkwhmhh_color_two . ';
 	border-color: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -376,32 +376,32 @@ h1, h2, h3 {
 	text-shadow: none;
 }
 a:active, a:hover {
-	color: ' . $jkwhmhh_color_1 . ';
+	color: ' . $jkwhmhh_color_one . ';
 	text-decoration: underline;
 }
 a {
-	color: ' . $jkwhmhh_color_1 . ';
+	color: ' . $jkwhmhh_color_one . ';
 }
 .wrap .add-new-h2, .wrap .add-new-h2:active, .wrap .page-title-action, .wrap .page-title-action:active {
-	color: ' . $jkwhmhh_color_1 . ';
+	color: ' . $jkwhmhh_color_one . ';
 }
 .theme-browser .theme.add-new-theme a:focus span:after, .theme-browser .theme.add-new-theme a:hover span:after {
 	background: #fff;
-	color: ' . $jkwhmhh_color_1 . ';
+	color: ' . $jkwhmhh_color_one . ';
 }
 .wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
-	background: ' . $jkwhmhh_color_1 . ';
+	background: ' . $jkwhmhh_color_one . ';
 	border-color: transparent;
 }
 .theme-browser .theme.add-new-theme a:focus:after, .theme-browser .theme.add-new-theme a:hover:after {
-	background: ' . $jkwhmhh_color_1 . ';
+	background: ' . $jkwhmhh_color_one . ';
 }
 #wpfooter {
 	display: none;
 }
 .wrap .add-new-h2:hover, .wrap .page-title-action:hover {
-	border-color: ' . $jkwhmhh_color_1 . ';
-	background: ' . $jkwhmhh_color_1 . ';
+	border-color: ' . $jkwhmhh_color_one . ';
+	background: ' . $jkwhmhh_color_one . ';
 	color: #fff;
 }
 #wp-admin-bar-wp-logo, #wp-admin-bar-updates, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-site-name-default, #wp-admin-bar-customize, #wp-admin-bar-edit, #wp-admin-bar-appearance, #wp-admin-bar-archive, #wp-admin-bar-search, #wp-admin-bar-view {
@@ -416,33 +416,33 @@ a {
 #adminmenu li.menu-top:hover {
 	position: relative;
 	background-color: #d2d3d6;
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .wp-submenu li:hover, #adminmenu li.opensub>a.menu-top  {
 	background-color: #d2d3d6;
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .opensub .wp-submenu li.current a, #adminmenu .wp-submenu li.current, #adminmenu .wp-submenu li.current a, #adminmenu .wp-submenu li.current a:focus, #adminmenu .wp-submenu li.current a:hover, #adminmenu a.wp-has-current-submenu:focus+.wp-submenu li.current a {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu .awaiting-mod, #adminmenu .update-plugins {
-	background-color: ' . $jkwhmhh_color_2 . ';
+	background-color: ' . $jkwhmhh_color_four . ';
 }
 #collapse-button {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #wpadminbar.mobile .quicklinks .hover .ab-icon:before, #wpadminbar.mobile .quicklinks .hover .ab-item:before {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #adminmenu li a:focus div.wp-menu-image:before, #adminmenu li.opensub div.wp-menu-image:before, #adminmenu li:hover div.wp-menu-image:before {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #collapse-button:focus, #collapse-button:hover {
 	background-color: #d2d3d6;
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 	box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.1);
 }
 .bar {
@@ -530,11 +530,11 @@ div.wp-menu-image:before {
 }
 
 // adds custom css to wp-admin elements on frontend
-add_action('wp_head', 'jkwhmhh_add_custom_css_for_frontend');
-function jkwhmhh_add_custom_css_for_frontend () {
+add_action('wp_head', 'jkwhmhh_add_css_frontend');
+function jkwhmhh_add_css_frontend () {
 echo '
-<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_1 . '">
-<meta name="theme-color" content="' . $jkwhmhh_color_1 . '">
+<meta name="msapplication-TileColor" content="' . $jkwhmhh_color_one . '">
+<meta name="theme-color" content="' . $jkwhmhh_color_one . '">
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 <style>
 #wpadminbar #wp-admin-bar-my-account.with-avatar>.ab-empty-item img, #wpadminbar #wp-admin-bar-my-account.with-avatar>a img {
@@ -544,10 +544,10 @@ echo '
 	padding: 0px 0;
 }
 .view-switch a.current:before {
-    color: ' . $jkwhmhh_color_1 . ';
+    color: ' . $jkwhmhh_color_one . ';
 }
 .column-comments .post-com-count-approved:focus .comment-count-approved, .column-comments .post-com-count-approved:hover .comment-count-approved, .column-response .post-com-count-approved:focus .comment-count-approved, .column-response .post-com-count-approved:hover .comment-count-approved {
-    background: ' . $jkwhmhh_color_1 . ';
+    background: ' . $jkwhmhh_color_one . ';
 }
 #wp-admin-bar-wp-logo, #wp-admin-bar-updates, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-site-name-default, #wp-admin-bar-customize, #wp-admin-bar-edit, #wp-admin-bar-appearance, #wp-admin-bar-archive, #wp-admin-bar-search, #wp-admin-bar-view {
 	display: none;
@@ -611,7 +611,7 @@ html.wp-toolbar {
 	content: "";
 }
 #wpadminbar.mobile .quicklinks .hover .ab-icon:before, #wpadminbar.mobile .quicklinks .hover .ab-item:before {
-	color: ' . $jkwhmhh_color_2_pre . ';
+	color: ' . $jkwhmhh_color_three . ';
 }
 #wpadminbar .ab-icon, #wpadminbar .ab-item:before, #wpadminbar>#wp-toolbar>#wp-admin-bar-root-default .ab-icon {
 	position: relative;
@@ -631,15 +631,15 @@ html.wp-toolbar {
 // local avatar
 class jkwhmhh_local_avatars {
     function jkwhmhh_local_avatars() {
-        add_filter('jkwhmhh_get_avatar', array($this, 'jkwhmhh_get_avatar'), 10, 5);
-        add_action('admin_init', array($this, 'jkwhmhh_init'));
+        add_filter('get_avatar', array($this, 'get_avatar'), 10, 5);
+        add_action('admin_init', array($this, 'jkwhmhh_admin_init'));
         add_action('show_user_profile', array($this, 'jkwhmhh_edit_user_profile'));
         add_action('jkwhmhh_edit_user_profile', array($this, 'jkwhmhh_edit_user_profile'));
         add_action('personal_options_update', array($this, 'jkwhmhh_edit_user_profile_update'));
         add_action('jkwhmhh_edit_user_profile_update', array($this, 'jkwhmhh_edit_user_profile_update'));
         add_filter('jkwhmhh_avatar_defaults', array($this, 'jkwhmhh_avatar_defaults'));
     }
-    function jkwhmhh_get_avatar($avatar = '', $id_or_email, $size = '96', $default = '', $alt = false) {
+    function get_avatar($avatar = '', $id_or_email, $size = '96', $default = '', $alt = false) {
         if (is_numeric($id_or_email))
             $user_id = (int) $id_or_email;
         elseif (is_string($id_or_email)) {
@@ -652,9 +652,9 @@ class jkwhmhh_local_avatars {
         if (!isset($local_avatars) || empty($local_avatars) || !isset($local_avatars['full'])) {
             if (!empty($avatar))
                 return $avatar;
-            remove_filter('jkwhmhh_get_avatar', 'jkwhmhh_get_simple_local_avatar');
-            $avatar = jkwhmhh_get_avatar($id_or_email, $size, $default);
-            add_filter('jkwhmhh_get_avatar', 'jkwhmhh_get_simple_local_avatar', 10, 5);
+            remove_filter('get_avatar', 'jkwhmhh_get_simple_local_avatar');
+            $avatar = get_avatar($id_or_email, $size, $default);
+            add_filter('get_avatar', 'jkwhmhh_get_simple_local_avatar', 10, 5);
             return $avatar;
         }
         if (!is_numeric($size))
@@ -676,7 +676,7 @@ class jkwhmhh_local_avatars {
         $avatar = "<img alt='" . esc_attr($alt) . "' src='" . $local_avatars[$size] . "' class='avatar avatar-{$size}{$author_class} photo' height='{$size}' width='{$size}' />";
         return $avatar;
     }
-    function jkwhmhh_init() {
+    function jkwhmhh_admin_init() {
         load_plugin_textdomain('simple-local-avatars', false, dirname(plugin_basename(__FILE__)) . '/localization/');
         register_setting('discussion', 'jkwhmhh_local_avatars_caps', array($this, 'jkwhmhh_sanitize_options'));
         add_settings_field('simple-local-avatars-caps', __('Avatar Permissions', 'simple-local-avatars'), array($this, 'jkwhmhh_avatar_settings_field'), 'discussion', 'avatars');
@@ -701,7 +701,7 @@ class jkwhmhh_local_avatars {
             <tr>
                 <th><label for="simple-local-avatar"><?php _e('Upload', 'simple-local-avatars'); ?></label></th>
                 <td style="width: 50px;" valign="top">
-                    <?php echo jkwhmhh_get_avatar($profileuser->ID); ?>
+                    <?php echo get_avatar($profileuser->ID); ?>
                 </td>
                 <td>
                     <?php
@@ -764,9 +764,9 @@ class jkwhmhh_local_avatars {
         } elseif (isset($_POST['simple-local-avatar-erase']) && $_POST['simple-local-avatar-erase'] == 1)
             $this->jkwhmhh_avatar_delete($user_id);
     }
-    // remove the custom jkwhmhh_get_avatar hook for the default avatar list output on options-discussion.php
+    // remove the custom get_avatar hook for the default avatar list output on options-discussion.php
     function jkwhmhh_avatar_defaults($jkwhmhh_avatar_defaults) {
-        remove_action('jkwhmhh_get_avatar', array($this, 'jkwhmhh_get_avatar'));
+        remove_action('get_avatar', array($this, 'get_avatar'));
         return $jkwhmhh_avatar_defaults;
     }
     // delete avatars based on user_id
@@ -786,7 +786,7 @@ $jkwhmhh_local_avatars = new jkwhmhh_local_avatars;
 if (!function_exists('jkwhmhh_get_simple_local_avatar')):
 	function jkwhmhh_get_simple_local_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
 		global $jkwhmhh_local_avatars;
-		return $jkwhmhh_local_avatars->jkwhmhh_get_avatar('', $id_or_email, $size, $default, $alt);
+		return $jkwhmhh_local_avatars->get_avatar('', $id_or_email, $size, $default, $alt);
 	}
 endif;
 register_uninstall_hook(__FILE__, 'jkwhmhh_local_avatars_uninstall');
@@ -797,8 +797,8 @@ function jkwhmhh_local_avatars_uninstall() {
 		$jkwhmhh_local_avatars->jkwhmhh_avatar_delete($user->user_id);
     delete_option('jkwhmhh_local_avatars_caps');
 }
-if (!function_exists('jkwhmhh_get_avatar')):
-function jkwhmhh_get_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
+if (!function_exists('get_avatar')):
+function get_avatar($id_or_email, $size = '96', $default = '', $alt = false) {
     if (!get_option('show_avatars')) return false;
     static $default_url;
     if (!isset($default_url)) $default_url = plugins_url( 'default.jpg', __FILE__ );
@@ -806,7 +806,7 @@ function jkwhmhh_get_avatar($id_or_email, $size = '96', $default = '', $alt = fa
     else $safe_alt = esc_attr($alt);
     if (!is_numeric($size)) $size = '96';
     $avatar = "<img alt='{$safe_alt}' src='{$default_url}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
-    return apply_filters('jkwhmhh_get_avatar', $avatar, $id_or_email, $size, $default, $alt);
+    return apply_filters('get_avatar', $avatar, $id_or_email, $size, $default, $alt);
 }
 endif;
 function jkwhmhh_limit_default_avatars_setting($default) {
@@ -857,11 +857,11 @@ function jkwhmhh_display_admin_settings() {
 	//add_settings_field("admin_logo", "Logo Url", "display_admin_logo_form", "admin-settings", "admin_setting_section");
 	//register_setting("admin_setting_section", "admin_logo");
 
-	add_settings_field("jkwhmhh_color_1", "Color", "jkwhmhh_display_color_1", "admin-settings", "admin_setting_section");
-	register_setting("admin_setting_section", "jkwhmhh_color_1");
+	add_settings_field("jkwhmhh_color_one", "Color", "jkwhmhh_display_color_1", "admin-settings", "admin_setting_section");
+	register_setting("admin_setting_section", "jkwhmhh_color_one");
 
-	//add_settings_field("jkwhmhh_color_2", "", "jkwhmhh_display_color_2", "admin-settings", "admin_setting_section");
-	//register_setting("admin_setting_section", "jkwhmhh_color_2");
+	//add_settings_field("jkwhmhh_color_four", "", "jkwhmhh_display_color_2", "admin-settings", "admin_setting_section");
+	//register_setting("admin_setting_section", "jkwhmhh_color_four");
 
 }
 function jkwhmhh_display_admin_setting_content() { echo ""; }
@@ -870,11 +870,11 @@ function jkwhmhh_display_admin_setting_content() { echo ""; }
 <?php
 //}
 function jkwhmhh_display_color_1() { ?>
-<input type="text" class="jkwhmhh_color_1" name="jkwhmhh_color_1" id="jkwhmhh_color_1" value="<?php echo get_option('jkwhmhh_color_1'); ?>" />
+<input type="text" class="jkwhmhh_color_one" name="jkwhmhh_color_one" id="jkwhmhh_color_one" value="<?php echo get_option('jkwhmhh_color_one'); ?>" />
 <?php
 }
 //function jkwhmhh_display_color_2() { ?>
-<!--<input type="text" class="jkwhmhh_color_2" name="jkwhmhh_color_2" id="jkwhmhh_color_2" value="<?php //echo get_option('jkwhmhh_color_2'); ?>" />-->
+<!--<input type="text" class="jkwhmhh_color_four" name="jkwhmhh_color_four" id="jkwhmhh_color_four" value="<?php //echo get_option('jkwhmhh_color_four'); ?>" />-->
 <?php
 //}
 add_action("admin_init", "jkwhmhh_display_admin_settings");
